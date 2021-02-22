@@ -18,6 +18,10 @@ public class Game {
     boolean isGettingOutOfPenaltyBox;
 
     public Game() {
+        setupQuestions();
+    }
+
+    private void setupQuestions() {
         for (int i = 0; i < 50; i++) {
             popQuestions.addLast(createPopQuestion(i));
             scienceQuestions.addLast(createScienceQuestion(i));
