@@ -26,20 +26,24 @@ public class Game {
         }
     }
 
-    private String createPopQuestion(int i) {
-        return "Pop Question " + i;
+    private String createPopQuestion(int index) {
+        return createQuestion(index, "Pop");
     }
 
-    private String createScienceQuestion(int i) {
-        return "Science Question " + i;
+    private String createScienceQuestion(int index) {
+        return createQuestion(index, "Science");
     }
 
-    private String createSportsQuestion(int i) {
-        return "Sports Question " + i;
+    private String createSportsQuestion(int index) {
+        return createQuestion(index, "Sports");
     }
 
     public String createRockQuestion(int index) {
-        return "Rock Question " + index;
+        return createQuestion(index, "Rock");
+    }
+
+    private String createQuestion(int i, String category) {
+        return category + " Question " + i;
     }
 
     public void add(String playerName) {
