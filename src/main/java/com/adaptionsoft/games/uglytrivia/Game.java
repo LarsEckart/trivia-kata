@@ -9,7 +9,7 @@ public class Game {
     int[] purses = new int[6];
     boolean[] inPenaltyBox = new boolean[6];
 
-    LinkedList<String> popQuestions = new LinkedList<>();
+    Questions popQuestions = new Questions(new LinkedList<>());
     LinkedList<String> scienceQuestions = new LinkedList<>();
     LinkedList<String> sportsQuestions = new LinkedList<>();
     LinkedList<String> rockQuestions = new LinkedList<>();
@@ -23,15 +23,11 @@ public class Game {
 
     private void setupQuestions() {
         for (int i = 0; i < 50; i++) {
-            addQuestion(popQuestions, i);
+            popQuestions.addQuestion(createPopQuestion(i));
             scienceQuestions.addLast(createScienceQuestion(i));
             sportsQuestions.addLast(createSportsQuestion(i));
             rockQuestions.addLast(createRockQuestion(i));
         }
-    }
-
-    private void addQuestion(LinkedList<String> l, int i) {
-        l.addLast(createPopQuestion(i));
     }
 
     private String createPopQuestion(int index) {
@@ -113,17 +109,13 @@ public class Game {
 
     private void askQuestion() {
         if ("Pop".equals(currentCategory()))
-            System.out.println(nextQuestion(popQuestions));
+            System.out.println(popQuestions.nextQuestion());
         if ("Science".equals(currentCategory()))
             System.out.println(scienceQuestions.removeFirst());
         if ("Sports".equals(currentCategory()))
             System.out.println(sportsQuestions.removeFirst());
         if ("Rock".equals(currentCategory()))
             System.out.println(rockQuestions.removeFirst());
-    }
-
-    private String nextQuestion(LinkedList<String> question) {
-        return question.removeFirst();
     }
 
 
