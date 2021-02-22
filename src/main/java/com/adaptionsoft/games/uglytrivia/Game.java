@@ -23,11 +23,15 @@ public class Game {
 
     private void setupQuestions() {
         for (int i = 0; i < 50; i++) {
-            popQuestions.addLast(createPopQuestion(i));
+            addQuestion(popQuestions, i);
             scienceQuestions.addLast(createScienceQuestion(i));
             sportsQuestions.addLast(createSportsQuestion(i));
             rockQuestions.addLast(createRockQuestion(i));
         }
+    }
+
+    private void addQuestion(LinkedList<String> l, int i) {
+        l.addLast(createPopQuestion(i));
     }
 
     private String createPopQuestion(int index) {
@@ -109,13 +113,17 @@ public class Game {
 
     private void askQuestion() {
         if ("Pop".equals(currentCategory()))
-            System.out.println(popQuestions.removeFirst());
+            System.out.println(nextQuestion(popQuestions));
         if ("Science".equals(currentCategory()))
             System.out.println(scienceQuestions.removeFirst());
         if ("Sports".equals(currentCategory()))
             System.out.println(sportsQuestions.removeFirst());
         if ("Rock".equals(currentCategory()))
             System.out.println(rockQuestions.removeFirst());
+    }
+
+    private String nextQuestion(LinkedList<String> question) {
+        return question.removeFirst();
     }
 
 
