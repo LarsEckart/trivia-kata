@@ -133,10 +133,7 @@ public class Game {
             if (isGettingOutOfPenaltyBox) {
                 return applesauce();
             } else {
-                currentPlayer++;
-                if (currentPlayer == players.size()) {
-                    currentPlayer = 0;
-                }
+                updateCurrentPlayer();
                 return true;
             }
         } else {
@@ -145,20 +142,36 @@ public class Game {
     }
 
     private boolean applesauce() {
-        System.out.println("Answer was correct!!!!");
-        purses[currentPlayer]++;
-        System.out.println(players.get(currentPlayer)
-                + " now has "
-                + purses[currentPlayer]
-                + " Gold Coins.");
+        announceCorrectAnswer();
+        updatePlayerCoins();
+        announcePlayerCoins();
 
         boolean winner = didPlayerWin();
+        updateCurrentPlayer();
+
+        return winner;
+    }
+
+    private void updateCurrentPlayer() {
         currentPlayer++;
         if (currentPlayer == players.size()) {
             currentPlayer = 0;
         }
+    }
 
-        return winner;
+    private void announcePlayerCoins() {
+        System.out.println(players.get(currentPlayer)
+                + " now has "
+                + purses[currentPlayer]
+                + " Gold Coins.");
+    }
+
+    private void updatePlayerCoins() {
+        purses[currentPlayer]++;
+    }
+
+    private void announceCorrectAnswer() {
+        System.out.println("Answer was correct!!!!");
     }
 
     public boolean wrongAnswer() {
@@ -166,8 +179,7 @@ public class Game {
         System.out.println(players.get(currentPlayer) + " was sent to the penalty box");
         inPenaltyBox[currentPlayer] = true;
 
-        currentPlayer++;
-        if (currentPlayer == players.size()) currentPlayer = 0;
+        updateCurrentPlayer();
         return true;
     }
 
