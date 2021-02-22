@@ -140,12 +140,16 @@ public class Game {
 
                 boolean winner = didPlayerWin();
                 currentPlayer++;
-                if (currentPlayer == players.size()) currentPlayer = 0;
+                if (currentPlayer == players.size()) {
+                    currentPlayer = 0;
+                }
 
                 return winner;
             } else {
                 currentPlayer++;
-                if (currentPlayer == players.size()) currentPlayer = 0;
+                if (currentPlayer == players.size()) {
+                    currentPlayer = 0;
+                }
                 return true;
             }
 
