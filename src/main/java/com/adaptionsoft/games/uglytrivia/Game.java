@@ -19,16 +19,20 @@ public class Game {
     private boolean isGettingOutOfPenaltyBox;
 
     public Game() {
+        initializeQuestions();
+    }
+
+    private void initializeQuestions() {
         for (int i = 0; i < 50; i++) {
-            popQuestions.addLast("Pop Question " + i);
-            scienceQuestions.addLast(("Science Question " + i));
-            sportsQuestions.addLast(("Sports Question " + i));
-            rockQuestions.addLast(createRockQuestion(i));
+            popQuestions.addLast(createQuestion(i, "Pop Question"));
+            scienceQuestions.addLast(createQuestion(i, "Science Question"));
+            sportsQuestions.addLast(createQuestion(i, "Sports Question"));
+            rockQuestions.addLast(createQuestion(i, "Rock Question"));
         }
     }
 
-    public String createRockQuestion(int index) {
-        return "Rock Question " + index;
+    public String createQuestion(int index, String question) {
+        return "%s %d".formatted(question, index);
     }
 
     public void add(String playerName) {
