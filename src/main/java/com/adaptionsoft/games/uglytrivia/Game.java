@@ -10,7 +10,7 @@ public class Game {
     private final int[] purses = new int[6];
     private final boolean[] inPenaltyBox = new boolean[6];
 
-    private final LinkedList<String> popQuestions = new LinkedList<>();
+    private final Questions popQuestions = new Questions(new LinkedList<>());
     private final LinkedList<String> scienceQuestions = new LinkedList<>();
     private final LinkedList<String> sportsQuestions = new LinkedList<>();
     private final LinkedList<String> rockQuestions = new LinkedList<>();
@@ -24,7 +24,7 @@ public class Game {
 
     private void initializeQuestions() {
         for (int i = 0; i < 50; i++) {
-            popQuestions.addLast(createQuestion(i, "Pop Question"));
+            popQuestions.addQuestion(i);
             scienceQuestions.addLast(createQuestion(i, "Science Question"));
             sportsQuestions.addLast(createQuestion(i, "Sports Question"));
             rockQuestions.addLast(createQuestion(i, "Rock Question"));
@@ -61,7 +61,7 @@ public class Game {
     }
 
     private void rollWhenInPenaltyBox(int roll) {
-        if (roll % 2 != 0) {
+        if (isOddRoll(roll)) {
             isGettingOutOfPenaltyBox = true;
 
             System.out.println(players.get(currentPlayer) + " is getting out of the penalty box");
@@ -72,9 +72,15 @@ public class Game {
         }
     }
 
+    private boolean isOddRoll(int roll) {
+        return roll % 2 != 0;
+    }
+
     private void rollWhenOutsidePenaltyBox(int roll) {
         places[currentPlayer] = places[currentPlayer] + roll;
-        if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
+        if (places[currentPlayer] > 11) {
+            places[currentPlayer] = places[currentPlayer] - 12;
+        }
 
         System.out.println(players.get(currentPlayer)
                 + "'s new location is "
@@ -85,13 +91,12 @@ public class Game {
 
     private void askQuestion() {
         switch (currentCategory()) {
-            case "Pop" -> System.out.println(popQuestions.removeFirst());
+            case "Pop" -> System.out.println(popQuestions.getNextQuestion());
             case "Science" -> System.out.println(scienceQuestions.removeFirst());
             case "Sports" -> System.out.println(sportsQuestions.removeFirst());
             case "Rock" -> System.out.println(rockQuestions.removeFirst());
         }
     }
-
 
     private String currentCategory() {
         return switch (places[currentPlayer]) {
