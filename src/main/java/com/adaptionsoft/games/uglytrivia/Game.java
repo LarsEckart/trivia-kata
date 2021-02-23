@@ -80,28 +80,22 @@ public class Game {
     }
 
     private void askQuestion() {
-        if (currentCategory() == "Pop")
-            System.out.println(popQuestions.removeFirst());
-        if (currentCategory() == "Science")
-            System.out.println(scienceQuestions.removeFirst());
-        if (currentCategory() == "Sports")
-            System.out.println(sportsQuestions.removeFirst());
-        if (currentCategory() == "Rock")
-            System.out.println(rockQuestions.removeFirst());
+        switch (currentCategory()) {
+            case "Pop" -> System.out.println(popQuestions.removeFirst());
+            case "Science" -> System.out.println(scienceQuestions.removeFirst());
+            case "Sports" -> System.out.println(sportsQuestions.removeFirst());
+            case "Rock" -> System.out.println(rockQuestions.removeFirst());
+        }
     }
 
 
     private String currentCategory() {
-        if (places[currentPlayer] == 0) return "Pop";
-        if (places[currentPlayer] == 4) return "Pop";
-        if (places[currentPlayer] == 8) return "Pop";
-        if (places[currentPlayer] == 1) return "Science";
-        if (places[currentPlayer] == 5) return "Science";
-        if (places[currentPlayer] == 9) return "Science";
-        if (places[currentPlayer] == 2) return "Sports";
-        if (places[currentPlayer] == 6) return "Sports";
-        if (places[currentPlayer] == 10) return "Sports";
-        return "Rock";
+        return switch (places[currentPlayer]) {
+            case 0, 4, 8 -> "Pop";
+            case 1, 5, 9 -> "Science";
+            case 2, 6, 10 -> "Sports";
+            default -> "Rock";
+        };
     }
 
     public boolean wasCorrectlyAnswered() {
