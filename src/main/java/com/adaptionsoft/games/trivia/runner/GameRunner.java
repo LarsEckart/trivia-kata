@@ -2,6 +2,7 @@ package com.adaptionsoft.games.trivia.runner;
 
 import java.util.Random;
 
+import com.adaptionsoft.games.uglytrivia.Console;
 import com.adaptionsoft.games.uglytrivia.Game;
 
 
@@ -15,7 +16,7 @@ public class GameRunner {
     }
 
     public static void play(Random random) {
-        Game aGame = new Game();
+        Game aGame = new Game(new Console());
 
         aGame.add("Chet");
         aGame.add("Pat");

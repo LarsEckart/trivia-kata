@@ -6,7 +6,7 @@ import java.util.List;
 public class Questions {
     private final List<String> popQuestions;
 
-    public Questions(LinkedList<String> popQuestions) {
+    public Questions(List<String> popQuestions) {
         this.popQuestions = popQuestions;
     }
 

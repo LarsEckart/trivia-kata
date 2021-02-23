@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Game {
     private final List<String> players = new ArrayList<>();
-    private final int[] places = new int[6];
+    public final int[] places = new int[6];
     private final int[] purses = new int[6];
     private final boolean[] inPenaltyBox = new boolean[6];
 
@@ -14,12 +14,14 @@ public class Game {
     private final LinkedList<String> scienceQuestions = new LinkedList<>();
     private final LinkedList<String> sportsQuestions = new LinkedList<>();
     private final LinkedList<String> rockQuestions = new LinkedList<>();
+    private final Console console;
 
     private int currentPlayer = 0;
     private boolean isGettingOutOfPenaltyBox;
 
-    public Game() {
+    public Game(Console console) {
         initializeQuestions();
+        this.console = console;
     }
 
     private void initializeQuestions() {
@@ -41,8 +43,8 @@ public class Game {
         purses[howManyPlayers()] = 0;
         inPenaltyBox[howManyPlayers()] = false;
 
-        System.out.println(playerName + " was added");
-        System.out.println("They are player number " + players.size());
+        console.print(playerName + " was added");
+        console.print("They are player number " + players.size());
     }
 
     public int howManyPlayers() {
@@ -50,8 +52,8 @@ public class Game {
     }
 
     public void roll(int roll) {
-        System.out.println(players.get(currentPlayer) + " is the current player");
-        System.out.println("They have rolled a " + roll);
+        console.print(players.get(currentPlayer) + " is the current player");
+        console.print("They have rolled a " + roll);
 
         if (inPenaltyBox[currentPlayer]) {
             rollWhenInPenaltyBox(roll);
@@ -82,17 +84,17 @@ public class Game {
             places[currentPlayer] = places[currentPlayer] - 12;
         }
 
-        System.out.println(players.get(currentPlayer)
+        console.print(players.get(currentPlayer)
                 + "'s new location is "
                 + places[currentPlayer]);
-        System.out.println("The category is " + currentCategory());
+        console.print("The category is " + currentCategory());
         askQuestion();
     }
 
     private void askQuestion() {
         switch (currentCategory()) {
             case "Pop" -> System.out.println(popQuestions.getNextQuestion());
-            case "Science" -> System.out.println(scienceQuestions.removeFirst());
+            case "Science" -> console.print(scienceQuestions.removeFirst());
             case "Sports" -> System.out.println(sportsQuestions.removeFirst());
             case "Rock" -> System.out.println(rockQuestions.removeFirst());
         }
