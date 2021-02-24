@@ -9,7 +9,7 @@ public class Questions {
         this.question = question;
     }
 
-    void addQuestion(String popQuestion) {
+    void add(String popQuestion) {
         question.addLast(popQuestion);
     }
 

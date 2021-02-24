@@ -23,7 +23,7 @@ public class Game {
 
     private void setupQuestions() {
         for (int i = 0; i < 50; i++) {
-            popQuestions.addQuestion(createPopQuestion(i));
+            popQuestions.add(createPopQuestion(i));
             scienceQuestions.addLast(createScienceQuestion(i));
             sportsQuestions.addLast(createSportsQuestion(i));
             rockQuestions.addLast(createRockQuestion(i));
