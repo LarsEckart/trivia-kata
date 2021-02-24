@@ -10,9 +10,9 @@ public class Game {
     boolean[] inPenaltyBox = new boolean[6];
 
     Questions popQuestions = new Questions(new LinkedList<>());
-    LinkedList<String> scienceQuestions = new LinkedList<>();
-    LinkedList<String> sportsQuestions = new LinkedList<>();
-    LinkedList<String> rockQuestions = new LinkedList<>();
+    Questions scienceQuestions = new Questions(new LinkedList<>());
+    Questions sportsQuestions = new Questions(new LinkedList<>());
+    Questions rockQuestions = new Questions(new LinkedList<>());
 
     int currentPlayer = 0;
     boolean isGettingOutOfPenaltyBox;
@@ -24,9 +24,9 @@ public class Game {
     private void setupQuestions() {
         for (int i = 0; i < 50; i++) {
             popQuestions.add(createPopQuestion(i));
-            scienceQuestions.addLast(createScienceQuestion(i));
-            sportsQuestions.addLast(createSportsQuestion(i));
-            rockQuestions.addLast(createRockQuestion(i));
+            scienceQuestions.add(createScienceQuestion(i));
+            sportsQuestions.add(createSportsQuestion(i));
+            rockQuestions.add(createRockQuestion(i));
         }
     }
 
@@ -111,11 +111,11 @@ public class Game {
         if ("Pop".equals(currentCategory()))
             System.out.println(popQuestions.nextQuestion());
         if ("Science".equals(currentCategory()))
-            System.out.println(scienceQuestions.removeFirst());
+            System.out.println(scienceQuestions.nextQuestion());
         if ("Sports".equals(currentCategory()))
-            System.out.println(sportsQuestions.removeFirst());
+            System.out.println(sportsQuestions.nextQuestion());
         if ("Rock".equals(currentCategory()))
-            System.out.println(rockQuestions.removeFirst());
+            System.out.println(rockQuestions.nextQuestion());
     }
 
 
