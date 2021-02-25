@@ -113,7 +113,7 @@ public class Game {
 
     private void askQuestion() {
         if ("Pop".equals(currentCategory()))
-            System.out.println(popQuestions.nextQuestion());
+            reportMessage(popQuestions.nextQuestion());
         if ("Science".equals(currentCategory()))
             reportMessage(scienceQuestions.nextQuestion());
         if ("Sports".equals(currentCategory()))
