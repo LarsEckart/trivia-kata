@@ -9,9 +9,9 @@ public class RollDiceTest {
 
   @Test
   void first_player_of_new_game() {
-    class OnePlayerGame extends Game{
+    class OnePlayerGameWithSilentGameReporter extends Game{
 
-      public OnePlayerGame() {
+      public OnePlayerGameWithSilentGameReporter() {
         super();
         add("irrelevant player name");
       }
@@ -21,7 +21,7 @@ public class RollDiceTest {
         // intentionally shut up
       }
     }
-    Game game = new OnePlayerGame();
+    Game game = new OnePlayerGameWithSilentGameReporter();
     // ASSUME the first player starts at 0
 
     game.roll(1);
