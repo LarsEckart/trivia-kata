@@ -62,4 +62,32 @@ public class RollDiceTest {
 
     assertThat(game.places[indexOfFirstPlayer]).isEqualTo(8);
   }
+
+  @Test
+  void first_player_moves_from_some_place_other_than_starting_place() {
+    int indexOfFirstPlayer = 0;
+
+    int indexOfStartingPlace = 4;
+    class OnePlayerGameWithSilentGameReporter extends Game{
+
+      public OnePlayerGameWithSilentGameReporter() {
+        super();
+        add("irrelevant player name");
+        // Suppose the current player is at place 0
+        super.places[0] = indexOfStartingPlace;
+        // SUPPOSE the next player to move is the first player
+        super.currentPlayer = indexOfFirstPlayer;
+      }
+
+      @Override
+      protected void reportMessage(String message) {
+        // intentionally shut up
+      }
+    }
+    Game game = new OnePlayerGameWithSilentGameReporter();
+
+    game.roll(3);
+
+    assertThat(game.places[indexOfFirstPlayer]).isEqualTo(7);
+  }
 }
