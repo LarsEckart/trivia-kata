@@ -9,6 +9,7 @@ public class RollDiceTest {
 
   @Test
   void first_player_of_new_game() {
+    int indexOfFirstPlayer = 0;
     class OnePlayerGameWithSilentGameReporter extends Game{
 
       public OnePlayerGameWithSilentGameReporter() {
@@ -16,6 +17,8 @@ public class RollDiceTest {
         add("irrelevant player name");
         // Suppose the current player is at place 0
         super.places[0] = 0;
+        // SUPPOSE the next player to move is the first player
+        super.currentPlayer = indexOfFirstPlayer;
       }
 
       @Override
@@ -27,7 +30,6 @@ public class RollDiceTest {
 
     game.roll(1);
 
-    int indexOfFirstPlayer = 0;
     assertThat(game.places[indexOfFirstPlayer]).isEqualTo(1);
   }
 }
