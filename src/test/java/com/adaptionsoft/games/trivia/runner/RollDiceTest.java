@@ -8,12 +8,20 @@ import org.junit.jupiter.api.Test;
 public class RollDiceTest {
 
   @Test
-  void happy_path() {
-    Game game = new Game();
-    game.add("irrelevant player name");
+  void first_player_of_new_game() {
+    class OnePlayerGame extends Game{
+
+      public OnePlayerGame() {
+        super();
+        add("irrelevant player name");
+      }
+    }
+    Game game = new OnePlayerGame();
+    // ASSUME the first player starts at 0
 
     game.roll(1);
 
-    assertThat(game.places[0]).isEqualTo(1);
+    int indexOfFirstPlayer = 0;
+    assertThat(game.places[indexOfFirstPlayer]).isEqualTo(1);
   }
 }
