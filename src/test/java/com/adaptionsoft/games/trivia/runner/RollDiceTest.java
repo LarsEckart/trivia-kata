@@ -10,13 +10,15 @@ public class RollDiceTest {
   @Test
   void first_player_moves_from_starting_place() {
     int indexOfFirstPlayer = 0;
+
+    int indexOfStartingPlace = 0;
     class OnePlayerGameWithSilentGameReporter extends Game{
 
       public OnePlayerGameWithSilentGameReporter() {
         super();
         add("irrelevant player name");
         // Suppose the current player is at place 0
-        super.places[0] = 0;
+        super.places[0] = indexOfStartingPlace;
         // SUPPOSE the next player to move is the first player
         super.currentPlayer = indexOfFirstPlayer;
       }
@@ -36,13 +38,15 @@ public class RollDiceTest {
   @Test
   void first_player_once_again_moves_from_starting_place() {
     int indexOfFirstPlayer = 0;
+
+    int indexOfStartingPlace = 0;
     class OnePlayerGameWithSilentGameReporter extends Game{
 
       public OnePlayerGameWithSilentGameReporter() {
         super();
         add("irrelevant player name");
         // Suppose the current player is at place 0
-        super.places[0] = 0;
+        super.places[0] = indexOfStartingPlace;
         // SUPPOSE the next player to move is the first player
         super.currentPlayer = indexOfFirstPlayer;
       }
