@@ -22,7 +22,6 @@ public class RollDiceForASingleTurnTest {
         // SUPPOSE the next player to move is the first player
         super.currentPlayer = indexOfFirstPlayer;
       }
-
     }
     Game game = new GameReadyToTakeASingleTurnWithSilentGameReporter();
 
@@ -46,7 +45,6 @@ public class RollDiceForASingleTurnTest {
         // SUPPOSE the next player to move is the first player
         super.currentPlayer = indexOfFirstPlayer;
       }
-
     }
     Game game = new GameReadyToTakeASingleTurnWithSilentGameReporter();
 
@@ -70,7 +68,6 @@ public class RollDiceForASingleTurnTest {
         // SUPPOSE the next player to move is the first player
         super.currentPlayer = indexOfFirstPlayer;
       }
-
     }
     Game game = new GameReadyToTakeASingleTurnWithSilentGameReporter();
 
@@ -94,7 +91,6 @@ public class RollDiceForASingleTurnTest {
         // SUPPOSE the next player to move is the first player
         super.currentPlayer = indexOfFirstPlayer;
       }
-
     }
     Game game = new GameReadyToTakeASingleTurnWithSilentGameReporter();
 
