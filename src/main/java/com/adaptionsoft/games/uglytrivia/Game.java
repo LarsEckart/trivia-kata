@@ -117,7 +117,7 @@ public class Game {
         if ("Science".equals(currentCategory()))
             reportMessage(scienceQuestions.nextQuestion());
         if ("Sports".equals(currentCategory()))
-            System.out.println(sportsQuestions.nextQuestion());
+            reportMessage(sportsQuestions.nextQuestion());
         if ("Rock".equals(currentCategory()))
             reportMessage(rockQuestions.nextQuestion());
     }
