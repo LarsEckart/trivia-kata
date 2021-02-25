@@ -14,6 +14,8 @@ public class RollDiceTest {
       public OnePlayerGameWithSilentGameReporter() {
         super();
         add("irrelevant player name");
+        // Suppose the current player is at place 0
+        super.places[0] = 0;
       }
 
       @Override
@@ -22,7 +24,6 @@ public class RollDiceTest {
       }
     }
     Game game = new OnePlayerGameWithSilentGameReporter();
-    // ASSUME the first player starts at 0
 
     game.roll(1);
 
