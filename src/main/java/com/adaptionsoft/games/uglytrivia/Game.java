@@ -56,8 +56,8 @@ public class Game {
         purses[howManyPlayers()] = 0;
         inPenaltyBox[howManyPlayers()] = false;
 
-        System.out.println(playerName + " was added");
-        System.out.println("They are player number " + players.size());
+        reportMessage(playerName + " was added");
+        reportMessage("They are player number " + players.size());
     }
 
     public int howManyPlayers() {
@@ -65,8 +65,8 @@ public class Game {
     }
 
     public void roll(int roll) {
-        System.out.println(players.get(currentPlayer) + " is the current player");
-        System.out.println("They have rolled a " + roll);
+        reportMessage(players.get(currentPlayer) + " is the current player");
+        reportMessage("They have rolled a " + roll);
 
         if (inPenaltyBox[currentPlayer]) {
             if (roll % 2 != 0) {
@@ -90,12 +90,16 @@ public class Game {
         }
     }
 
+    protected void reportMessage(String message) {
+        System.out.println(message);
+    }
+
     private void announceCategory() {
-        System.out.println("The category is " + currentCategory());
+        reportMessage("The category is " + currentCategory());
     }
 
     private void announceNewLocation() {
-        System.out.println(players.get(currentPlayer)
+        reportMessage(players.get(currentPlayer)
                 + "'s new location is "
                 + places[currentPlayer]);
     }
@@ -111,7 +115,7 @@ public class Game {
         if ("Pop".equals(currentCategory()))
             System.out.println(popQuestions.nextQuestion());
         if ("Science".equals(currentCategory()))
-            System.out.println(scienceQuestions.nextQuestion());
+            reportMessage(scienceQuestions.nextQuestion());
         if ("Sports".equals(currentCategory()))
             System.out.println(sportsQuestions.nextQuestion());
         if ("Rock".equals(currentCategory()))

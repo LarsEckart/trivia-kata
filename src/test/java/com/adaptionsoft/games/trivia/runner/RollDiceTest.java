@@ -15,6 +15,11 @@ public class RollDiceTest {
         super();
         add("irrelevant player name");
       }
+
+      @Override
+      protected void reportMessage(String message) {
+        // intentionally shut up
+      }
     }
     Game game = new OnePlayerGame();
     // ASSUME the first player starts at 0
