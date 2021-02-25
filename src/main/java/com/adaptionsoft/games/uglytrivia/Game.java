@@ -78,10 +78,9 @@ public class Game {
         if (inPenaltyBox[currentPlayer]) {
             if (roll % 2 != 0) {
                 isGettingOutOfPenaltyBox = true;
-
                 System.out.println(players.get(currentPlayer) + " is getting out of the penalty box");
-                moveForward(roll);
 
+                moveForward(roll);
                 announceNewLocation();
                 announceCategory();
                 askQuestion();
