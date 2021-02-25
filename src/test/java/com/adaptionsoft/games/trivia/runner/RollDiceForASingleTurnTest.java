@@ -5,16 +5,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.adaptionsoft.games.uglytrivia.Game;
 import org.junit.jupiter.api.Test;
 
-public class RollDiceTest {
+public class RollDiceForASingleTurnTest {
 
   @Test
   void first_player_moves_from_starting_place() {
     int indexOfFirstPlayer = 0;
 
     int indexOfStartingPlace = 0;
-    class OnePlayerGameWithSilentGameReporter extends Game{
+    class GameReadyToTakeASingleTurnWithSilentGameReporter extends Game {
 
-      public OnePlayerGameWithSilentGameReporter() {
+      public GameReadyToTakeASingleTurnWithSilentGameReporter() {
         super();
         add("irrelevant player name");
         // Suppose the current player is at place 0
@@ -28,7 +28,7 @@ public class RollDiceTest {
         // intentionally shut up
       }
     }
-    Game game = new OnePlayerGameWithSilentGameReporter();
+    Game game = new GameReadyToTakeASingleTurnWithSilentGameReporter();
 
     game.roll(1);
 
@@ -40,9 +40,9 @@ public class RollDiceTest {
     int indexOfFirstPlayer = 0;
 
     int indexOfStartingPlace = 0;
-    class OnePlayerGameWithSilentGameReporter extends Game{
+    class GameReadyToTakeASingleTurnWithSilentGameReporter extends Game {
 
-      public OnePlayerGameWithSilentGameReporter() {
+      public GameReadyToTakeASingleTurnWithSilentGameReporter() {
         super();
         add("irrelevant player name");
         // Suppose the current player is at place 0
@@ -56,7 +56,7 @@ public class RollDiceTest {
         // intentionally shut up
       }
     }
-    Game game = new OnePlayerGameWithSilentGameReporter();
+    Game game = new GameReadyToTakeASingleTurnWithSilentGameReporter();
 
     game.roll(8);
 
@@ -68,9 +68,9 @@ public class RollDiceTest {
     int indexOfFirstPlayer = 0;
 
     int indexOfStartingPlace = 4;
-    class OnePlayerGameWithSilentGameReporter extends Game{
+    class GameReadyToTakeASingleTurnWithSilentGameReporter extends Game {
 
-      public OnePlayerGameWithSilentGameReporter() {
+      public GameReadyToTakeASingleTurnWithSilentGameReporter() {
         super();
         add("irrelevant player name");
         // Suppose the current player is at place 0
@@ -84,7 +84,7 @@ public class RollDiceTest {
         // intentionally shut up
       }
     }
-    Game game = new OnePlayerGameWithSilentGameReporter();
+    Game game = new GameReadyToTakeASingleTurnWithSilentGameReporter();
 
     game.roll(3);
 
@@ -96,9 +96,9 @@ public class RollDiceTest {
     int indexOfFirstPlayer = 0;
 
     int indexOfStartingPlace = 11;
-    class OnePlayerGameWithSilentGameReporter extends Game{
+    class GameReadyToTakeASingleTurnWithSilentGameReporter extends Game {
 
-      public OnePlayerGameWithSilentGameReporter() {
+      public GameReadyToTakeASingleTurnWithSilentGameReporter() {
         super();
         add("irrelevant player name");
         // Suppose the current player is at place 0
@@ -112,7 +112,7 @@ public class RollDiceTest {
         // intentionally shut up
       }
     }
-    Game game = new OnePlayerGameWithSilentGameReporter();
+    Game game = new GameReadyToTakeASingleTurnWithSilentGameReporter();
 
     game.roll(3);
 
