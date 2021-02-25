@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Game {
+
+    private final GameReporter gameReporter;
     ArrayList<String> players = new ArrayList<>();
     public int[] places = new int[6];
     int[] purses = new int[6];
@@ -18,7 +20,12 @@ public class Game {
     boolean isGettingOutOfPenaltyBox;
 
     public Game() {
+        this(new PrintStreamGameReporter());
+    }
+
+    public Game(GameReporter gameReporter) {
         setupQuestions();
+        this.gameReporter = gameReporter;
     }
 
     private void setupQuestions() {
@@ -56,8 +63,8 @@ public class Game {
         purses[howManyPlayers()] = 0;
         inPenaltyBox[howManyPlayers()] = false;
 
-        reportMessage(playerName + " was added");
-        reportMessage("They are player number " + players.size());
+        gameReporter.reportMessage(playerName + " was added");
+        gameReporter.reportMessage("They are player number " + players.size());
     }
 
     public int howManyPlayers() {
@@ -65,8 +72,8 @@ public class Game {
     }
 
     public void roll(int roll) {
-        reportMessage(players.get(currentPlayer) + " is the current player");
-        reportMessage("They have rolled a " + roll);
+        gameReporter.reportMessage(players.get(currentPlayer) + " is the current player");
+        gameReporter.reportMessage("They have rolled a " + roll);
 
         if (inPenaltyBox[currentPlayer]) {
             if (roll % 2 != 0) {
@@ -90,18 +97,14 @@ public class Game {
         }
     }
 
-    protected void reportMessage(String message) {
-        System.out.println(message);
-    }
-
     private void announceCategory() {
-        reportMessage("The category is " + currentCategory());
+        gameReporter.reportMessage("The category is " + currentCategory());
     }
 
     private void announceNewLocation() {
-        reportMessage(players.get(currentPlayer)
-                + "'s new location is "
-                + places[currentPlayer]);
+        gameReporter.reportMessage(players.get(currentPlayer)
+                                   + "'s new location is "
+                                   + places[currentPlayer]);
     }
 
     private void moveForward(int roll) {
@@ -113,13 +116,13 @@ public class Game {
 
     private void askQuestion() {
         if ("Pop".equals(currentCategory()))
-            reportMessage(popQuestions.nextQuestion());
+            gameReporter.reportMessage(popQuestions.nextQuestion());
         if ("Science".equals(currentCategory()))
-            reportMessage(scienceQuestions.nextQuestion());
+            gameReporter.reportMessage(scienceQuestions.nextQuestion());
         if ("Sports".equals(currentCategory()))
-            reportMessage(sportsQuestions.nextQuestion());
+            gameReporter.reportMessage(sportsQuestions.nextQuestion());
         if ("Rock".equals(currentCategory()))
-            reportMessage(rockQuestions.nextQuestion());
+            gameReporter.reportMessage(rockQuestions.nextQuestion());
     }
 
 

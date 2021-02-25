@@ -15,7 +15,7 @@ public class RollDiceForASingleTurnTest {
     class GameReadyToTakeASingleTurnWithSilentGameReporter extends Game {
 
       public GameReadyToTakeASingleTurnWithSilentGameReporter() {
-        super();
+        super(new SilentGameReporter());
         add("irrelevant player name");
         // Suppose the current player is at place 0
         super.places[0] = indexOfStartingPlace;
@@ -23,10 +23,6 @@ public class RollDiceForASingleTurnTest {
         super.currentPlayer = indexOfFirstPlayer;
       }
 
-      @Override
-      protected void reportMessage(String message) {
-        // intentionally shut up
-      }
     }
     Game game = new GameReadyToTakeASingleTurnWithSilentGameReporter();
 
@@ -43,7 +39,7 @@ public class RollDiceForASingleTurnTest {
     class GameReadyToTakeASingleTurnWithSilentGameReporter extends Game {
 
       public GameReadyToTakeASingleTurnWithSilentGameReporter() {
-        super();
+        super(new SilentGameReporter());
         add("irrelevant player name");
         // Suppose the current player is at place 0
         super.places[0] = indexOfStartingPlace;
@@ -51,10 +47,6 @@ public class RollDiceForASingleTurnTest {
         super.currentPlayer = indexOfFirstPlayer;
       }
 
-      @Override
-      protected void reportMessage(String message) {
-        // intentionally shut up
-      }
     }
     Game game = new GameReadyToTakeASingleTurnWithSilentGameReporter();
 
@@ -71,7 +63,7 @@ public class RollDiceForASingleTurnTest {
     class GameReadyToTakeASingleTurnWithSilentGameReporter extends Game {
 
       public GameReadyToTakeASingleTurnWithSilentGameReporter() {
-        super();
+        super(new SilentGameReporter());
         add("irrelevant player name");
         // Suppose the current player is at place 0
         super.places[0] = indexOfStartingPlace;
@@ -79,10 +71,6 @@ public class RollDiceForASingleTurnTest {
         super.currentPlayer = indexOfFirstPlayer;
       }
 
-      @Override
-      protected void reportMessage(String message) {
-        // intentionally shut up
-      }
     }
     Game game = new GameReadyToTakeASingleTurnWithSilentGameReporter();
 
@@ -99,7 +87,7 @@ public class RollDiceForASingleTurnTest {
     class GameReadyToTakeASingleTurnWithSilentGameReporter extends Game {
 
       public GameReadyToTakeASingleTurnWithSilentGameReporter() {
-        super();
+        super(new SilentGameReporter());
         add("irrelevant player name");
         // Suppose the current player is at place 0
         super.places[0] = indexOfStartingPlace;
@@ -107,10 +95,6 @@ public class RollDiceForASingleTurnTest {
         super.currentPlayer = indexOfFirstPlayer;
       }
 
-      @Override
-      protected void reportMessage(String message) {
-        // intentionally shut up
-      }
     }
     Game game = new GameReadyToTakeASingleTurnWithSilentGameReporter();
 
