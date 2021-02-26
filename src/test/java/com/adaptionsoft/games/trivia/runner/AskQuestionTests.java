@@ -12,19 +12,17 @@ public class AskQuestionTests {
 
   private String lastAskedQuestion;
   private GameReporter spyGameReporter;
-  private Game game;
 
   @BeforeEach
   void setUp() {
     spyGameReporter = message -> AskQuestionTests.this.lastAskedQuestion = message;
-    game = new Game();
   }
 
   @Test
   void popQuestion() {
     Questions popQuestions = new Questions();
     popQuestions.add("::the next question in the Pop category::");
-    game.askQuestion("Pop", spyGameReporter, popQuestions, null, null, null);
+    Game.askQuestion("Pop", spyGameReporter, popQuestions, null, null, null);
 
     assertThat(lastAskedQuestion).isEqualTo("::the next question in the Pop category::");
   }
@@ -33,7 +31,7 @@ public class AskQuestionTests {
   void scienceQuestion() {
     Questions scienceQuestions = new Questions();
     scienceQuestions.add("::the next question in the Science category::");
-    game.askQuestion("Science", spyGameReporter, null, scienceQuestions, null, null);
+    Game.askQuestion("Science", spyGameReporter, null, scienceQuestions, null, null);
 
     assertThat(lastAskedQuestion).isEqualTo("::the next question in the Science category::");
   }
@@ -42,7 +40,7 @@ public class AskQuestionTests {
   void sportsQuestion() {
     Questions sportsQuestions = new Questions();
     sportsQuestions.add("::the next question in the Sports category::");
-    game.askQuestion("Sports", spyGameReporter, null, null, sportsQuestions, null);
+    Game.askQuestion("Sports", spyGameReporter, null, null, sportsQuestions, null);
 
     assertThat(lastAskedQuestion).isEqualTo("::the next question in the Sports category::");
   }
@@ -51,7 +49,7 @@ public class AskQuestionTests {
   void rockQuestion() {
     Questions rockQuestions = new Questions();
     rockQuestions.add("::the next question in the Rock category::");
-    game.askQuestion("Rock", spyGameReporter, null, null, null, rockQuestions);
+    Game.askQuestion("Rock", spyGameReporter, null, null, null, rockQuestions);
 
     assertThat(lastAskedQuestion).isEqualTo("::the next question in the Rock category::");
   }

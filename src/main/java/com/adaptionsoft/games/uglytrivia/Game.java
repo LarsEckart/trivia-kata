@@ -130,7 +130,7 @@ public class Game {
     }
   }
 
-  public void askQuestion(String category, GameReporter gameReporter, Questions popQuestions,
+  public static void askQuestion(String category, GameReporter gameReporter, Questions popQuestions,
       Questions scienceQuestions, Questions sportsQuestions, Questions rockQuestions) {
     switch (category) {
       case "Pop" -> gameReporter.reportMessage(popQuestions.nextQuestion());
