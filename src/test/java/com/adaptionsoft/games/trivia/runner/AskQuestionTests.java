@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.adaptionsoft.games.uglytrivia.Game;
 import com.adaptionsoft.games.uglytrivia.GameReporter;
 import com.adaptionsoft.games.uglytrivia.Questions;
+import java.util.NoSuchElementException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -52,5 +54,24 @@ public class AskQuestionTests {
     Game.askQuestion("Rock", spyGameReporter, null, null, null, rockQuestions);
 
     assertThat(lastAskedQuestion).isEqualTo("::the next question in the Rock category::");
+  }
+
+  @Test
+  void no_questions_left_in_category() {
+    Questions rockQuestions = new Questions();
+    Assertions.assertThrows(NoSuchElementException.class, () ->
+        Game.askQuestion("Rock", spyGameReporter, null, null, null, rockQuestions));
+  }
+
+  @Test
+  void two_consecutive_questions_in_same_category() {
+    Questions rockQuestions = new Questions();
+    rockQuestions.add("::the next question in the Rock category::");
+    rockQuestions.add("::the second next question in the Rock category::");
+    Game.askQuestion("Rock", spyGameReporter, null, null, null, rockQuestions);
+
+    assertThat(lastAskedQuestion).isEqualTo("::the next question in the Rock category::");
+    Game.askQuestion("Rock", spyGameReporter, null, null, null, rockQuestions);
+    assertThat(lastAskedQuestion).isEqualTo("::the second next question in the Rock category::");
   }
 }
