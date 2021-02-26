@@ -12,16 +12,16 @@ public class AskQuestionTests {
 
   private String lastAskedQuestion;
   private GameReporter spyGameReporter;
+  private Game game;
 
   @BeforeEach
   void setUp() {
     spyGameReporter = message -> AskQuestionTests.this.lastAskedQuestion = message;
+    game = new Game();
   }
 
   @Test
   void popQuestion() {
-    Game game = new Game();
-
     Questions popQuestions = new Questions();
     popQuestions.add("::the next question in the Pop category::");
     game.askQuestion("Pop", spyGameReporter, popQuestions, null, null, null);
@@ -31,8 +31,6 @@ public class AskQuestionTests {
 
   @Test
   void scienceQuestion() {
-    Game game = new Game();
-
     Questions scienceQuestions = new Questions();
     scienceQuestions.add("::the next question in the Science category::");
     game.askQuestion("Science", spyGameReporter, null, scienceQuestions, null, null);
@@ -42,8 +40,6 @@ public class AskQuestionTests {
 
   @Test
   void sportsQuestion() {
-    Game game = new Game();
-
     Questions sportsQuestions = new Questions();
     sportsQuestions.add("::the next question in the Sports category::");
     game.askQuestion("Sports", spyGameReporter, null, null, sportsQuestions, null);
@@ -53,8 +49,6 @@ public class AskQuestionTests {
 
   @Test
   void rockQuestion() {
-    Game game = new Game();
-
     Questions rockQuestions = new Questions();
     rockQuestions.add("::the next question in the Rock category::");
     game.askQuestion("Rock", spyGameReporter, null, null, null, rockQuestions);
