@@ -9,7 +9,7 @@ public class Questions {
         this.question = new LinkedList<>();
     }
 
-    void add(String popQuestion) {
+    public void add(String popQuestion) {
         question.addLast(popQuestion);
     }
 

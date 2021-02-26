@@ -82,7 +82,8 @@ public class Game {
         updateLocationOfCurrentPlayer(roll);
         announceLocationOfCurrentPlayer();
         announceCategory();
-        announceQuestion();
+        askQuestion(currentCategory(), gameReporter, popQuestions, scienceQuestions,
+            sportsQuestions, rockQuestions);
       } else {
         System.out.println(players.get(currentPlayer) + " is not getting out of the penalty box");
         isGettingOutOfPenaltyBox = false;
@@ -91,7 +92,8 @@ public class Game {
       updateLocationOfCurrentPlayer(roll);
       announceLocationOfCurrentPlayer();
       announceCategory();
-      announceQuestion();
+      askQuestion(currentCategory(), gameReporter, popQuestions, scienceQuestions, sportsQuestions,
+          rockQuestions);
     }
   }
 
@@ -128,8 +130,9 @@ public class Game {
     }
   }
 
-  private void announceQuestion() {
-    switch (currentCategory()) {
+  public void askQuestion(String category, GameReporter gameReporter, Questions popQuestions,
+      Questions scienceQuestions, Questions sportsQuestions, Questions rockQuestions) {
+    switch (category) {
       case "Pop" -> gameReporter.reportMessage(popQuestions.nextQuestion());
       case "Science" -> gameReporter.reportMessage(scienceQuestions.nextQuestion());
       case "Sports" -> gameReporter.reportMessage(sportsQuestions.nextQuestion());
