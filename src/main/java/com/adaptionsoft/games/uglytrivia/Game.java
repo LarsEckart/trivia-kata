@@ -114,14 +114,12 @@ public class Game {
     }
 
     private void askQuestion() {
-        if ("Pop".equals(currentCategory()))
-            gameReporter.reportMessage(popQuestions.nextQuestion());
-        if ("Science".equals(currentCategory()))
-            gameReporter.reportMessage(scienceQuestions.nextQuestion());
-        if ("Sports".equals(currentCategory()))
-            gameReporter.reportMessage(sportsQuestions.nextQuestion());
-        if ("Rock".equals(currentCategory()))
-            gameReporter.reportMessage(rockQuestions.nextQuestion());
+        switch (currentCategory()) {
+            case "Pop" -> gameReporter.reportMessage(popQuestions.nextQuestion());
+            case "Science" -> gameReporter.reportMessage(scienceQuestions.nextQuestion());
+            case "Sports" -> gameReporter.reportMessage(sportsQuestions.nextQuestion());
+            case "Rock" -> gameReporter.reportMessage(rockQuestions.nextQuestion());
+        }
     }
 
 
