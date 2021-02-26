@@ -1,7 +1,6 @@
 package com.adaptionsoft.games.uglytrivia;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class Game {
 
@@ -11,10 +10,10 @@ public class Game {
   int[] purses = new int[6];
   boolean[] inPenaltyBox = new boolean[6];
 
-  Questions popQuestions = new Questions(new LinkedList<>());
-  Questions scienceQuestions = new Questions(new LinkedList<>());
-  Questions sportsQuestions = new Questions(new LinkedList<>());
-  Questions rockQuestions = new Questions(new LinkedList<>());
+  Questions popQuestions = new Questions();
+  Questions scienceQuestions = new Questions();
+  Questions sportsQuestions = new Questions();
+  Questions rockQuestions = new Questions();
 
   protected int currentPlayer = 0;
   boolean isGettingOutOfPenaltyBox;
