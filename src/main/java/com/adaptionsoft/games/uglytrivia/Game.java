@@ -71,48 +71,64 @@ public class Game {
   }
 
   public void roll(int roll) {
-    gameReporter.reportMessage(players.get(currentPlayer) + " is the current player");
-    gameReporter.reportMessage("They have rolled a " + roll);
+    reportWhoIsCurrentPlayer();
+    reportRollOfCurrentPlayer(roll);
 
-    if (inPenaltyBox[currentPlayer]) {
-      if (roll % 2 != 0) {
+    if (isCurrentPlayerInPenaltyBox()) {
+      if (isOdd(roll)) {
         isGettingOutOfPenaltyBox = true;
         System.out.println(players.get(currentPlayer) + " is getting out of the penalty box");
 
-        moveForward(roll);
-        announceNewLocation();
+        updateLocationOfCurrentPlayer(roll);
+        announceLocationOfCurrentPlayer();
         announceCategory();
-        askQuestion();
+        announceQuestion();
       } else {
         System.out.println(players.get(currentPlayer) + " is not getting out of the penalty box");
         isGettingOutOfPenaltyBox = false;
       }
     } else {
-      moveForward(roll);
-      announceNewLocation();
+      updateLocationOfCurrentPlayer(roll);
+      announceLocationOfCurrentPlayer();
       announceCategory();
-      askQuestion();
+      announceQuestion();
     }
+  }
+
+  private boolean isOdd(int roll) {
+    return roll % 2 != 0;
+  }
+
+  private boolean isCurrentPlayerInPenaltyBox() {
+    return inPenaltyBox[currentPlayer];
+  }
+
+  private void reportRollOfCurrentPlayer(int roll) {
+    gameReporter.reportMessage("They have rolled a " + roll);
+  }
+
+  private void reportWhoIsCurrentPlayer() {
+    gameReporter.reportMessage(players.get(currentPlayer) + " is the current player");
   }
 
   private void announceCategory() {
     gameReporter.reportMessage("The category is " + currentCategory());
   }
 
-  private void announceNewLocation() {
+  private void announceLocationOfCurrentPlayer() {
     gameReporter.reportMessage(players.get(currentPlayer)
                                + "'s new location is "
                                + places[currentPlayer]);
   }
 
-  private void moveForward(int roll) {
+  private void updateLocationOfCurrentPlayer(int roll) {
     places[currentPlayer] = places[currentPlayer] + roll;
     if (places[currentPlayer] > 11) {
       places[currentPlayer] = places[currentPlayer] - 12;
     }
   }
 
-  private void askQuestion() {
+  private void announceQuestion() {
     switch (currentCategory()) {
       case "Pop" -> gameReporter.reportMessage(popQuestions.nextQuestion());
       case "Science" -> gameReporter.reportMessage(scienceQuestions.nextQuestion());
@@ -132,7 +148,7 @@ public class Game {
   }
 
   public boolean wasCorrectlyAnswered() {
-    if (inPenaltyBox[currentPlayer]) {
+    if (isCurrentPlayerInPenaltyBox()) {
       if (isGettingOutOfPenaltyBox) {
         return applesauce();
       } else {
