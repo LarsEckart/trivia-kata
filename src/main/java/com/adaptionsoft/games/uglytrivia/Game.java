@@ -38,9 +38,10 @@ public class Game {
   public boolean add(String playerName) {
     players.add(playerName);
     int playerNumber = howManyPlayers();
-    places.movePlayerToStartingField(playerNumber);
-    purses.setPlayerStartingCoins(playerNumber);
-    penaltyBox.moveToPenaltyBox(playerNumber, false);
+    int playerIndex = playerNumber - 1;
+    places.movePlayerToStartingField(playerIndex);
+    purses.setPlayerStartingCoins(playerIndex);
+    penaltyBox.moveToPenaltyBox(playerIndex, false);
 
     System.out.println(playerName + " was added");
     System.out.println("They are player number " + players.size());
